@@ -3,14 +3,66 @@ import PhoneIcon from 'react-native-vector-icons/Entypo';
 import BirthDayIcon from 'react-native-vector-icons/FontAwesome';
 import LocationIcon from 'react-native-vector-icons/MaterialIcons';
 import {StyledView, StyledText, StyledImage} from '../styles/styles';
-import {Button} from 'react-native';
+import {Modal, ScrollView} from 'react-native';
+import {useState} from 'react';
 
 const TabDetail = () => {
-  const seeAllProducts = () => {
-    console.warn('clicked');
-  };
+  const [modalVisible, setModalVisible] = useState(false);
   return (
     <>
+      <StyledView classes={['justify:center', 'items:center', 'mt-10']}>
+        <ScrollView>
+          <Modal
+            animationType="slide"
+            transparent={true}
+            visible={modalVisible}>
+            <StyledView classes={['justify:center', 'items:center', 'mt-10']}>
+              <StyledView
+                classes={[
+                  'mt:4/5',
+                  'bg:white',
+                  'h:48',
+                  'w:4/5',
+                  'shadow:2xl',
+                  'rounded:lg',
+                  'py:10',
+                  'px:5',
+                ]}>
+                <StyledText
+                  classes={['text:2xl', 'color:black', 'text-align:center']}>
+                  Do you want to Logout?
+                </StyledText>
+                <StyledView classes={['flex:row', 'justify:evenly', 'my:5']}>
+                  <StyledText
+                    onPress={() => setModalVisible(!modalVisible)}
+                    classes={[
+                      'color:white',
+                      'rounded:lg',
+                      'px:5',
+                      'py:2',
+                      'text:lg',
+                      'bg:[#f4511e]',
+                    ]}>
+                    Cancel
+                  </StyledText>
+                  <StyledText
+                    onPress={() => setModalVisible(!modalVisible)}
+                    classes={[
+                      'color:white',
+                      'rounded:lg',
+                      'px:5',
+                      'py:2',
+                      'text:lg',
+                      'bg:[#f4511e]',
+                    ]}>
+                    Logout
+                  </StyledText>
+                </StyledView>
+              </StyledView>
+            </StyledView>
+          </Modal>
+        </ScrollView>
+      </StyledView>
       <StyledView classes={['flex:1', 'flex:col']}>
         <StyledView classes={['items:center', 'mt:[50]', 'z:10']}>
           <StyledImage
@@ -114,7 +166,6 @@ const TabDetail = () => {
             </StyledView>
             <StyledView classes={['flex:row', 'justify:center', 'my:5']}>
               <StyledText
-                onPress={seeAllProducts}
                 classes={[
                   'color:white',
                   'rounded:lg',
@@ -127,7 +178,7 @@ const TabDetail = () => {
                 Account Details
               </StyledText>
               <StyledText
-                onPress={seeAllProducts}
+                onPress={() => setModalVisible(true)}
                 classes={[
                   'color:white',
                   'rounded:lg',

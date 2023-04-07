@@ -11,6 +11,7 @@ import TabHome from './src/pages/TabHome';
 import TabDetail from './src/pages/TabDetail';
 import {StatusBar} from 'react-native';
 import {StyleProvider} from 'react-native-zephyr';
+import Cart from './src/pages/Cart';
 // import TabHome from './src/pages/TabHome';
 // import TabDetail from './src/pages/TabDetail';
 
@@ -19,6 +20,14 @@ const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
 function App() {
+  const screenOptions = {
+    tabBarStyle: {
+      height: 65,
+    },
+    tabBarItemStyle: {
+      margin: 5,
+    },
+  };
   return (
     <StyleProvider colorScheme="auto">
       <NavigationContainer>
@@ -51,7 +60,7 @@ function App() {
           }}
         />
       </Stack.Navigator> */}
-        <Tab.Navigator>
+        <Tab.Navigator {...{screenOptions}}>
           <Tab.Screen
             name="TabHome"
             component={TabHome}
@@ -61,6 +70,7 @@ function App() {
               headerStyle: {
                 backgroundColor: '#f4511e',
               },
+
               headerTintColor: '#fff',
               headerTitleAlign: 'center',
               tabBarActiveTintColor: '#f4511e',
@@ -74,6 +84,21 @@ function App() {
                 <Icon name="account-details" size={35} color="red" />
               ),
               title: 'My Details',
+              headerStyle: {
+                backgroundColor: '#f4511e',
+              },
+              headerTintColor: '#fff',
+              headerTitleAlign: 'center',
+              // tabBarBadge: 3,
+              tabBarActiveTintColor: '#f4511e',
+            }}
+          />
+          <Tab.Screen
+            name="Cart"
+            component={Cart}
+            options={{
+              tabBarIcon: () => <Icon name="cart" size={35} color="red" />,
+              title: 'My Cart',
               headerStyle: {
                 backgroundColor: '#f4511e',
               },
