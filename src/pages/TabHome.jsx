@@ -3,6 +3,9 @@ import Banner from '../components/home/Banner';
 import Products from '../components/home/Products';
 
 const TabHome = () => {
+  const seeAllProducts = () => {
+    console.warn('clicked');
+  };
   return (
     <View style={{flex: 1}}>
       <View style={{flex: 1, backgroundColor: 'white'}}>
@@ -23,10 +26,11 @@ const TabHome = () => {
             }}>
             <Text style={{color: '#f4511e', fontSize: 20}}>Products</Text>
             <Text
+              onPress={seeAllProducts}
               style={{
                 color: 'white',
-                borderRadius: 10,
-                paddingHorizontal: 15,
+                borderRadius: 5,
+                paddingHorizontal: 10,
                 paddingVertical: 3,
                 fontSize: 14,
                 backgroundColor: '#f4511e',

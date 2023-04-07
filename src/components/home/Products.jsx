@@ -108,7 +108,6 @@ const Products = () => {
             </View>
           );
         })}
-        {/* <Icon name="comments" size={30} color="#900" /> */}
       </View>
     </ScrollView>
   );
