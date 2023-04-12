@@ -1,6 +1,6 @@
-import {View, Text, Button, Image, ScrollView} from 'react-native';
+import {Button, Image, ScrollView} from 'react-native';
 import {useState, useEffect} from 'react';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import {StyledView, StyledText, StyledImage} from '../../styles/styles';
 
 const Products = () => {
   const [product, setProduct] = useState([]);
@@ -17,98 +17,75 @@ const Products = () => {
   };
   return (
     <ScrollView>
-      <View
-        style={{
-          flex: 1,
-          flexDirection: 'column',
-          gap: 10,
-          justifyContent: 'center',
-          flexWrap: 'wrap',
-        }}>
+      <StyledView
+        classes={[
+          'flex:1',
+          'flex-col',
+          'justify:center',
+          'shadow:lg',
+          'flex:wrap',
+        ]}>
         {product.map(item => {
           return (
-            <View
+            <StyledView
               key={item.id}
-              style={{
-                width: '100%',
-                borderColor: '#f4511e',
-                shadowColor: '#171717',
-                shadowOffset: {width: -2, height: 4},
-                shadowOpacity: 0.2,
-                shadowRadius: 3,
-                borderRadius: 10,
-                borderWidth: 1,
-                padding: 15,
-              }}>
-              <View
-                style={{
-                  flex: 1,
-                  flexDirection: 'row',
-                  gap: 10,
-                  alignItems: 'center',
-                }}>
-                <View style={{flex: 1}}>
-                  <Image
-                    style={{
-                      width: 60,
-                      height: 100,
-                      resizeMode: 'contain',
-                      borderRadius: 10,
-                    }}
+              classes={[
+                'rounded:lg',
+                'border:hairline',
+                'bg:white',
+                'p:3',
+                'mb:3',
+                'w:full',
+              ]}>
+              <StyledView classes={['flex:row', 'items:center']}>
+                <StyledView style={{flex: 1}}>
+                  <StyledImage
+                    classes={['w:14', 'h:24', 'resize:contain', 'rounded:md']}
                     source={{uri: `${item.image}`}}
                   />
-                </View>
-                <View style={{flex: 4}}>
-                  <Text
-                    style={{
-                      color: 'black',
-                      fontSize: 12,
-                      fontWeight: '700',
-                      paddingBottom: 5,
-                    }}>
+                </StyledView>
+                <StyledView style={{flex: 4}}>
+                  <StyledText
+                    classes={[
+                      'color:black',
+                      'text:md',
+                      'font-weight:semibold',
+                      'pb:2',
+                    ]}>
                     {item.title}
-                  </Text>
-                  <Text
-                    style={{
-                      color: 'black',
-                      fontSize: 9,
-                      paddingBottom: 10,
-                    }}>
-                    {item.description}
-                  </Text>
-                  <View
-                    style={{
-                      flex: 1,
-                      flexDirection: 'row',
-                      justifyContent: 'space-between',
-                      alignItems: 'center',
-                    }}>
-                    <View
-                      style={{
-                        flex: 1,
-                        flexDirection: 'row',
-                        gap: 10,
-                      }}>
-                      <Text style={{color: 'black', fontSize: 12}}>
+                  </StyledText>
+                  <StyledText classes={['color:black', 'text:xs', 'pb:2']}>
+                    {item.description.slice(0, 100)}
+                    {item.description.length > 100 && (
+                      <StyledText classes={['color:red-400']}>
+                        {' '}
+                        ...Read More
+                      </StyledText>
+                    )}
+                  </StyledText>
+                  <StyledView
+                    classes={['flex:row', 'justify:between', 'items:center']}>
+                    <StyledView classes={['flex:row']}>
+                      <StyledText classes={['color:black', 'text:sm', 'mr:2']}>
                         Rating: {item?.rating?.rate}
-                      </Text>
-                      <Text style={{color: 'black', fontSize: 12}}>
+                      </StyledText>
+                      <StyledText classes={['color:black', 'text:sm']}>
                         Count: {item?.rating?.count}
-                      </Text>
-                    </View>
-                    <View>
+                      </StyledText>
+                    </StyledView>
+                    <StyledView>
                       <Button
                         color={'#f4511e'}
                         onPress={() => addTocart(item.id)}
                         title="Add to cart"></Button>
-                    </View>
-                  </View>
-                </View>
-              </View>
-            </View>
+                    </StyledView>
+                  </StyledView>
+                </StyledView>
+              </StyledView>
+            </StyledView>
           );
         })}
-      </View>
+      </StyledView>
     </ScrollView>
   );
 };

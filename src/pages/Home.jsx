@@ -1,4 +1,5 @@
 import {Text, View, Button} from 'react-native';
+import {StyledText, StyledView} from '../styles/styles';
 // import {useState, useEffect} from 'react';
 
 const Home = ({navigation, route}) => {
@@ -20,15 +21,6 @@ const Home = ({navigation, route}) => {
       />
     </View>
   );
-  //   const [count, setCount] = useState(0);
-  //   useEffect(() => {
-  //     navigation.setOptions({
-  //       headerRight: () => (
-  //         <Button onPress={() => setCount(c => c + 1)} title="Update count" />
-  //       ),
-  //     });
-  //   }, [navigation]);
-  //   return <Text style={{fontSize: 25, color: 'black'}}>Count: {count}</Text>;
 };
 
 export default Home;

@@ -16,21 +16,33 @@ const Cart = () => {
     console.warn(id);
   };
   return (
-    <ScrollView>
-      <StyledView classes={['flex:1', 'justify:center', 'm:7']}>
-        {product.map(item => {
-          return (
-            <StyledView
-              key={item.id}
-              classes={['shadow:xl', 'rounded:lg', 'p:3', 'bg:white', 'mb:2']}>
-              <StyledView classes={['flex:row', 'items:start']}>
-                <StyledView style={{flex: 1}}>
-                  <StyledImage
-                    classes={['w:20', 'h:24', 'resize:contain', 'rounded:lg']}
-                    source={{uri: `${item.image}`}}
-                  />
-                </StyledView>
-                <StyledView style={{flex: 4}}>
+    <StyledView classes={['h:40']}>
+      <ScrollView
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        decelerationRate={'fast'}>
+        <StyledView classes={['flex:1', 'flex:row', 'justify:center', 'my:5']}>
+          {product.map(item => {
+            return (
+              <StyledView
+                key={item.id}
+                classes={[
+                  'shadow:md',
+                  'rounded:lg',
+                  'p:3',
+                  'h:32',
+                  'bg:white',
+                  'mb:2',
+                  'mr:3',
+                ]}>
+                <StyledView classes={['flex:row', 'items:start']}>
+                  <StyledView style={{flex: 1}}>
+                    <StyledImage
+                      classes={['w:20', 'h:24', 'resize:contain', 'rounded:lg']}
+                      source={{uri: `${item.image}`}}
+                    />
+                  </StyledView>
+                  {/* <StyledView style={{flex: 4}}>
                   <StyledText
                     classes={[
                       'color:black',
@@ -93,13 +105,14 @@ const Cart = () => {
                       </StyledText>
                     </StyledView>
                   </StyledView>
+                </StyledView> */}
                 </StyledView>
               </StyledView>
-            </StyledView>
-          );
-        })}
-      </StyledView>
-    </ScrollView>
+            );
+          })}
+        </StyledView>
+      </ScrollView>
+    </StyledView>
   );
 };
 
